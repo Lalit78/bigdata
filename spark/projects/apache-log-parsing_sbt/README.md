@@ -1,5 +1,7 @@
 # Problem Statement
 
+
+
 Churning the logs of NASA Kennedy Space Center WWW server.
 
 Dataset is located at /data/spark/project/NASA_access_log_Aug95.gz in [CloudxLab](https://cloudxlab.com) HDFS.
