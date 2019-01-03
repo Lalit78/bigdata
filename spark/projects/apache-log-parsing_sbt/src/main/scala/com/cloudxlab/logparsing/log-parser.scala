@@ -16,6 +16,17 @@ class Utils extends Serializable {
         return (ip.toString)
     }
 
+    def getipgt126(accessLogs:RDD[String], sc:SparkContext, topn:Int):Array[(String,Int)] = {
+        //Keep only the lines which have IP
+        var ipaccesslogs = accessLogs.filter(containsIP)
+        var cleanips = ipaccesslogs.map(line => (extractIP(line),extractIP(line).substring(0,3)));
+		    var ipgt = cleanips.filter((x) => x._2.toInt <= 126)
+        var ips_tuples = ipgt.map((x) => (x._1,1));
+        var frequencies = ips_tuples.reduceByKey(_ + _);
+        var sortedfrequencies = frequencies.sortBy(x => x._2, false)
+        return sortedfrequencies.take(topn)
+    }
+    
     def gettop10(accessLogs:RDD[String], sc:SparkContext, topn:Int):Array[(String,Int)] = {
         //Keep only the lines which have IP
         var ipaccesslogs = accessLogs.filter(containsIP)

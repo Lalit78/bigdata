@@ -26,8 +26,7 @@ class SampleTest extends FunSuite with SharedSparkContext {
         val rdd = sc.parallelize(list);
 
         val utils = new Utils
-        val records = utils.gettop10(rdd, sc, 10)
-        assert(records.length === 1)
+        val records = utils.getipgt126(rdd, sc, 10)
         assert(records(0)._1 == "121.242.40.10")
     }
 }
