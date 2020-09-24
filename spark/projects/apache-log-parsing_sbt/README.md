@@ -48,3 +48,5 @@ URL Count
 HTTP code - Count
 200 - 15400
 404 - 324
+
+**Q3: Write spark code to find out top 5 time frame for high traffic (which day of the week or hour of the day receives peak traffic, this information will help company to manage resources for handling peak traffic load)**
